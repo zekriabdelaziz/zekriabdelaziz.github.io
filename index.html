@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yes or No</title>
+  <title>Yes or No Prank</title>
 
   <style>
     body {
@@ -14,7 +14,7 @@
       justify-content: center;
       font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #667eea, #764ba2);
-      overflow: hidden; /* prevents scroll when NO moves */
+      overflow: hidden;
     }
 
     .card {
@@ -58,21 +58,19 @@
     #no {
       background: #f44336;
       color: white;
-      position: fixed; /* move freely on page */
+      position: fixed;
       z-index: 2;
     }
 
-    .message {
-      font-size: 22px;
-      font-weight: bold;
-      color: #4CAF50;
+    iframe {
+      border-radius: 15px;
     }
   </style>
 </head>
 <body>
 
   <div class="card" id="card">
-    <h2>Give me the mach3al?</h2>
+    <h2>Do you want the Mach3al?</h2>
 
     <div class="buttons">
       <button id="yes">Yes</button>
@@ -82,14 +80,10 @@
     </div>
   </div>
 
-  <!-- 🎵 Background music -->
-  <audio id="music" src="glorious.mp3"></audio>
-
   <script>
     const noBtn = document.getElementById("no");
     const yesBtn = document.getElementById("yes");
     const card = document.getElementById("card");
-    const music = document.getElementById("music");
 
     noBtn.addEventListener("click", () => {
       const maxX = window.innerWidth - noBtn.offsetWidth;
@@ -100,15 +94,19 @@
     });
 
     yesBtn.addEventListener("click", () => {
-      music.volume = 0.5;
-      music.loop = true;
-      music.play();
+      const videoId = "E7oMBq1vkCM"; // <--- Your YouTube video
 
-      card.innerHTML = `<div class="message">Much better 😄❤️</div>`;
+      card.innerHTML = `
+        <iframe width="320" height="180"
+          src="https://www.youtube.com/embed/${videoId}?autoplay=1&controls=1"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      `;
     });
   </script>
 
 </body>
 </html>
-
-
